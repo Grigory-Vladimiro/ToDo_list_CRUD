@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import Form from "./components/Form";
+import Header from "./components/Header";
+import TODOHero from "./components/TODOHero";
+import TODOList from "./components/TODOList";
 
-function App() {
-  const [count, setCount] = useState(0)
+function Home() {
+  const [todos, setTodos] = useState([]);
+
+ 
+  const addTodo = (newTodo) => {
+    setTodos([...todos, { id: Date.now(), title: newTodo }]);
+  };
+
+  
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  
+  const moveUp = (index) => {
+    if (index === 0) return; 
+    const newTodos = [...todos];
+    [newTodos[index - 1], newTodos[index]] = [newTodos[index], newTodos[index - 1]];
+    setTodos(newTodos);
+  };
+
+  
+  const moveDown = (index) => {
+    if (index === todos.length - 1) return; 
+    const newTodos = [...todos];
+    [newTodos[index], newTodos[index + 1]] = [newTodos[index + 1], newTodos[index]];
+    setTodos(newTodos);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="wrapper">
+      <Header />
+      <TODOHero todos_completed={todos.filter((todo) => todo.completed).length} total_todos={todos.length} />
+      <Form onAddTodo={addTodo} />
+      <TODOList todos={todos} onDelete={deleteTodo} onMoveUp={moveUp} onMoveDown={moveDown} />
+    </div>
+  );
 }
 
-export default App
+export default Home;
