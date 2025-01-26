@@ -1,7 +1,7 @@
 function TODOList({ todos, onDelete, onMoveUp, onMoveDown }) {
     return (
       <ol className="todo_list">
-        {todos && todos.length > 0 ? (
+        {todos && todos.length > 0 && 
           todos.map((item, index) => (
             <Item
               key={item.id}
@@ -11,10 +11,7 @@ function TODOList({ todos, onDelete, onMoveUp, onMoveDown }) {
               onMoveUp={onMoveUp}
               onMoveDown={onMoveDown}
             />
-          ))
-        ) : (
-          <p>Seems lonely in here, what are you up to?</p>
-        )}
+          ))}
       </ol>
     );
   }
@@ -24,6 +21,7 @@ function TODOList({ todos, onDelete, onMoveUp, onMoveDown }) {
   function Item({ item, index, onDelete, onMoveUp, onMoveDown }) {
     return (
       <li id={item.id} className="todo_item">
+        {/* left part */}
         <button className="todo_items_left">
           <svg>
             <circle cx="11.998" cy="11.998" fillRule="nonzero" r="9.998" />
@@ -31,6 +29,7 @@ function TODOList({ todos, onDelete, onMoveUp, onMoveDown }) {
           <p>{item.title}</p>
         </button>
   
+        {/* ringt part */}
         <div className="todo_items_right">
           <button onClick={() => onMoveUp(index)}>
             <span className="visually-hidden">Move Up</span>
