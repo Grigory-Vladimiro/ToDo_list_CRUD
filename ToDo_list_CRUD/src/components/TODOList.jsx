@@ -1,7 +1,7 @@
-function TODOList({ todos, onDelete, onMoveUp, onMoveDown }) {
+function TODOList({ todos, onDelete, onMoveUp, onMoveDown, onToggleDone }) {
     return (
       <ol className="todo_list">
-        {todos && todos.length > 0 && 
+        {todos && todos.length > 0 ? (
           todos.map((item, index) => (
             <Item
               key={item.id}
@@ -10,39 +10,50 @@ function TODOList({ todos, onDelete, onMoveUp, onMoveDown }) {
               onDelete={onDelete}
               onMoveUp={onMoveUp}
               onMoveDown={onMoveDown}
+              onToggleDone={onToggleDone}
             />
-          ))}
+          ))
+        ) : (
+          <p className="empty_list_message">Your to-do list is empty!</p>
+        )}
       </ol>
     );
   }
   
   export default TODOList;
   
-  function Item({ item, index, onDelete, onMoveUp, onMoveDown }) {
+  function Item({ item, index, onDelete, onMoveUp, onMoveDown, onToggleDone }) {
     return (
-      <li id={item.id} className="todo_item">
-        {/* left part */}
-        <button className="todo_items_left">
-          <p>{item.title}</p>
+      <li id={item.id} className={`todo_item ${item.completed ? "done" : ""}`}>
+        {/* "Done" button */}
+        <button
+          className="todo_done_button"
+          onClick={() => onToggleDone(item.id)}
+          aria-label={item.completed ? "Mark as not done" : "Mark as done"}
+        >
+          {item.completed ? "✔" : "○"}
         </button>
   
-        {/* ringt part */}
+        {/* left part */}
+        <div className="todo_items_left">
+          <p>{item.title}</p>
+        </div>
+  
+        {/* right part */}
         <div className="todo_items_right">
-          <button onClick={() => onMoveUp(index)}>
+          <button onClick={() => onMoveUp(index)} aria-label="Move task up">
             <span className="visually-hidden">Move Up</span>
-            <svg>
+            <svg aria-hidden="true">
               <path d="M10 15l5-5-5-5" />
             </svg>
           </button>
-          <button onClick={() => onMoveDown(index)}>
+          <button onClick={() => onMoveDown(index)} aria-label="Move task down">
             <span className="visually-hidden">Move Down</span>
-            <svg>
+            <svg aria-hidden="true">
               <path d="M10 5l5 5-5 5" />
             </svg>
           </button>
-          <button onClick={() => onDelete(item.id)}
-          aria-label="Delete task"
-          className="delete_button">
+          <button onClick={() => onDelete(item.id)} aria-label="Delete task" className="delete_button">
             <span className="visually-hidden">Delete</span>
             <svg aria-hidden="true">
               <path d="M5 5l10 10M15 5l-10 10" />

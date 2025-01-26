@@ -243,3 +243,25 @@ header h1 {
   height: 20px;
   fill: currentColor; 
 }
+
+
+.todo_done_button {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  margin-right: 12px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.todo_done_button:hover {
+  color: #76a22d;
+}
+
+
+.todo_item.done {
+  background-color: #76a22d; 
+  text-decoration: line-through;
+  opacity: 0.8;
+}
