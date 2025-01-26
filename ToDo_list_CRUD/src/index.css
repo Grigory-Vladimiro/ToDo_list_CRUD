@@ -225,7 +225,6 @@ header h1 {
   }
 }
 .delete_button {
-  background-color: red !important;
   color: white !important; 
   border: none;
   display: flex;
@@ -264,4 +263,31 @@ header h1 {
   background-color: #76a22d; 
   text-decoration: line-through;
   opacity: 0.8;
+}
+
+
+.todo_done_button img,
+.todo_items_right button img {
+  width: 24px; 
+  height: 24px;
+  display: block;
+}
+
+
+.todo_done_button {
+  background-color: transparent;
+  border: none;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+
+.todo_items_right button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.todo_items_right button:hover img {
+  filter: brightness(1.2); 
 }
