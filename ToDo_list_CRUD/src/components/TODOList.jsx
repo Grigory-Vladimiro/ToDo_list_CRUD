@@ -40,9 +40,11 @@ function TODOList({ todos, onDelete, onMoveUp, onMoveDown }) {
               <path d="M10 5l5 5-5 5" />
             </svg>
           </button>
-          <button onClick={() => onDelete(item.id)}>
+          <button onClick={() => onDelete(item.id)}
+          aria-label="Delete task"
+          className="delete_button">
             <span className="visually-hidden">Delete</span>
-            <svg>
+            <svg aria-hidden="true">
               <path d="M5 5l10 10M15 5l-10 10" />
             </svg>
           </button>

@@ -224,3 +224,22 @@ header h1 {
     justify-content: space-around;
   }
 }
+.delete_button {
+  background-color: red !important;
+  color: white !important; 
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.delete_button:hover {
+  color: #ff0000; 
+}
+
+.delete_button svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor; 
+}
