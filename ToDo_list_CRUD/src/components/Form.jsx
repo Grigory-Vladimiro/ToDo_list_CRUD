@@ -23,11 +23,8 @@ function Form({ onAddTodo }) {
           onChange={(e) => setInputValue(e.target.value)}
         />
       </label>
-      <button type="submit">
-        <span className="visually-hidden">Submit</span>
-        <svg>
-          <path d="" />
-        </svg>
+      <button type="submit" aria-label="Add task">
+        +
       </button>
     </form>
   );
