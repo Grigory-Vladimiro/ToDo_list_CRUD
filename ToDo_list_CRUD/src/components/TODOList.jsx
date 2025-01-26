@@ -14,7 +14,7 @@ function TODOList({ todos, onDelete, onMoveUp, onMoveDown, onToggleDone }) {
             />
           ))
         ) : (
-          <p className="empty_list_message">Your to-do list is empty!</p>
+          <p className="empty_list_message"></p>
         )}
       </ol>
     );
