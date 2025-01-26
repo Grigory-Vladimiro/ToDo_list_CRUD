@@ -18,7 +18,7 @@ function Form({ onAddTodo }) {
           type="text"
           name="todo"
           id="todo"
-          placeholder="Write your next task"
+          placeholder="Put your task here and hit enter or '+' button"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />

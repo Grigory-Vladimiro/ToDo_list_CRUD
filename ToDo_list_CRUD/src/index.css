@@ -38,7 +38,6 @@ button {
   white-space: nowrap;
 }
 
-/* Заголовок */
 header {
   display: flex;
   align-items: center;
@@ -52,7 +51,7 @@ header h1 {
   color: #88ab33;
 }
 
-/* Основная обертка */
+
 .wrapper {
   display: flex;
   flex-direction: column;
