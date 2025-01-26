@@ -1,6 +1,7 @@
 {
   "name": "todo-list-crud",
   "private": true,
+  "homepage": "https://https://grigory-vladimiro.github.io/ToDo_list_CRUD/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
