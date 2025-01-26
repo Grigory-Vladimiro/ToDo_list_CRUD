@@ -23,9 +23,6 @@ function TODOList({ todos, onDelete, onMoveUp, onMoveDown }) {
       <li id={item.id} className="todo_item">
         {/* left part */}
         <button className="todo_items_left">
-          <svg>
-            <circle cx="11.998" cy="11.998" fillRule="nonzero" r="9.998" />
-          </svg>
           <p>{item.title}</p>
         </button>
   
